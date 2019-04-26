@@ -1,8 +1,8 @@
 {
-  "name": "@spksoft/koa-decorator",
+  "name": "devit-koa-decorator",
   "description": "@route decorator for koa-router (fork from https://github.com/gwuhaolin/koa-router-decorator)",
   "license": "MIT",
-  "repository": "spksoft/koa-router-decorator",
+  "repository": "devit-koa-router-decorator",
   "keywords": [
     "koa",
     "router",
