@@ -34,31 +34,15 @@ function getFiles(dir: string, files_?: string[]): string[] {
  * 格式化返回数据的格式
  */
 async function formatResponse(descriptor: any, ctx: Context) {
-  const ret = descriptor.value(ctx);
-  if (ret != null) {
-    try {
-      const data = await Promise.resolve(ret);
-      if (data != null) {
-        // 正常格式
-        ctx.body = data;
-      }
-    } catch (err) {
-      if (err) {
-        const {code = err.code || 500, msg = err.message || err.msg ||  err.error || JSON.stringify(err), data} = err;
-        // 错误格式
-        ctx.body = {
-          code,
-          msg,
-          data,
-        };
-        ctx.status = 500;
-        // 非线上环境记录错误
-        // if (process.env.NODE_ENV != 'production') {
-        //   console.trace(err);
-        // }
-      }
-    }
+  const data = await descriptor.value(ctx);
+
+  if (!data) {
+    ctx.status = 404;
+  } else {
+    ctx.status = 200;
+    ctx.body = data;
   }
+
 }
 
 const router = new Router();
