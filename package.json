@@ -9,7 +9,7 @@
     "decorator",
     "@route"
   ],
-  "version": "2.2.0",
+  "version": "2.3.0",
   "scripts": {
     "build": "tsc",
     "publish": "npm run build && npm publish"
