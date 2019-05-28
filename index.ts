@@ -36,7 +36,7 @@ function getFiles(dir: string, files_?: string[]): string[] {
 async function formatResponse(descriptor: any, ctx: Context) {
   const data = await descriptor.value(ctx);
 
-  if (!data) {
+  if (data === null) {
     ctx.status = 404;
   } else {
     ctx.status = 200;
